@@ -1,0 +1,246 @@
+:root {
+  font-size: 16px;
+  font-family: "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: #f8f8ff;
+  background-color: #05030c;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #05030c;
+  color: #eaecff;
+  letter-spacing: 0.01em;
+}
+
+.container {
+  width: min(1200px, 90vw);
+  margin: 0 auto;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(circle at 25% -10%, #6047ff 0%, #140628 45%, #05010f 100%);
+  overflow: hidden;
+  padding: 2rem 0 4rem;
+}
+
+.hero__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      40% 80% at 65% 20%,
+      rgba(187, 138, 255, 0.45),
+      transparent
+    ),
+    linear-gradient(135deg, rgba(100, 72, 255, 0.7), rgba(164, 97, 255, 0));
+  mix-blend-mode: screen;
+  filter: blur(10px);
+  opacity: 0.85;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.hero > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1rem 0.5rem;
+}
+
+.logo img {
+  height: 36px;
+}
+
+.nav__menu {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(90deg, rgba(9, 6, 26, 0.95), rgba(6, 4, 18, 0.8));
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.04);
+  padding: 0.35rem 1.5rem;
+}
+
+.nav__links {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__links a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e3ddff;
+  transition: color 200ms ease;
+}
+
+.nav__links a:hover {
+  color: #ffffff;
+}
+
+.button {
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.6rem 1.5rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 200ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.button--ghost {
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding-inline: 1.75rem;
+  min-width: 108px;
+}
+
+.button--ghost:hover {
+  border-color: #ffffff;
+}
+
+.hero__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: center;
+  gap: 3rem;
+  margin-top: 5rem;
+  padding: 0 1.5rem;
+}
+
+.hero__text .eyebrow {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.4em;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  margin: 0;
+  color: #ffffff;
+}
+
+.lead {
+  max-width: 32ch;
+  color: rgba(234, 238, 255, 0.8);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.joinus-btn {
+    height: auto;
+    width: 100%;
+    display: block;
+  }
+  
+
+.button--primary {
+  background: linear-gradient(135deg, #5239ff, #8c63ff 55%, #c494ff);
+  color: #0b0416;
+  border: 1px solid transparent;
+  box-shadow: 0 15px 35px rgba(103, 70, 255, 0.45);
+}
+
+.button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 35px rgba(108, 76, 255, 0.5);
+}
+
+.button--outline {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  background: transparent;
+  padding-inline: 2.5rem;
+}
+
+.button--outline:hover {
+  border-color: #ffffff;
+}
+
+.hero__visual {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.hero__visual img {
+  width: min(460px, 85vw);
+  filter: drop-shadow(-25px 30px 45px rgba(5, 0, 17, 0.95));
+  transform: rotate(-4deg);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav__menu {
+    order: 3;
+    width: 100%;
+  }
+
+  .nav-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .nav__links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+
+  .hero__content {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .hero__actions {
+    justify-content: center;
+  }
+}
+

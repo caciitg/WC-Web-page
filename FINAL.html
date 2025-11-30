@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winter Consulting & Team</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- ADDED FOR SMOOTH SCROLLING --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            /* COLOR THEME */
+            --bg-deep: #010214;  
+            --orb-bright: #4526D0; 
+            --orb-mid: #311B9A;    
+            --orb-dark: #1E1164;   
+            
+            /* GRID SETTINGS */
+            --grid-line: rgba(217, 217, 217, 0.15);
+            --grid-size: 240px; 
+            
+            --section-bg: #020318; 
+            --card-bg: rgba(11, 14, 37, 0.6);
+            --text-main: #FFFFFF;
+            --text-muted: rgba(255, 255, 255, 0.6);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-deep);
+            overflow-x: hidden;
+            
+            /* BACKGROUND STACK */
+            background-image: 
+                /* 1. Grid Lines */
+                linear-gradient(0deg, var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+                
+                /* 2. DARK RINGS (Silhouette Layer) */
+                radial-gradient(circle 306px at 50% 86vh, #010214 98%, transparent 100%),
+                radial-gradient(circle 641px at 50% 88vh, rgba(1, 2, 20, 0.2) 100%, transparent 100%),
+                radial-gradient(circle 1019px at 50% 102.2vh, rgba(1, 2, 20, 0.1) 99.5%, transparent 100%),
+
+                /* 3. Side Glows */
+                radial-gradient(circle at 10% 20%, rgba(69, 38, 208, 0.35) 0%, transparent 35%),
+                radial-gradient(circle at 5% 10%, rgba(49, 27, 154, 0.4) 0%, transparent 45%),
+                radial-gradient(circle at 15% 15%, rgba(30, 17, 100, 0.5) 0%, transparent 60%),
+                
+                /* 4. Right Side Glows (Mirrored) */
+                radial-gradient(circle at 90% 20%, rgba(69, 38, 208, 0.35) 0%, transparent 35%),
+                radial-gradient(circle at 95% 10%, rgba(49, 27, 154, 0.4) 0%, transparent 45%),
+                radial-gradient(circle at 85% 15%, rgba(30, 17, 100, 0.5) 0%, transparent 60%),
+                
+                /* 5. Bottom Glow */
+                radial-gradient(circle at 90% 90%, rgba(69, 38, 208, 0.1) 0%, transparent 50%);
+                
+            background-size: 
+                var(--grid-size) var(--grid-size), 
+                var(--grid-size) var(--grid-size), 
+                100vw 100vh, 
+                100vw 100vh, 
+                100vw 100vh, 
+                100vw 100vh, 100vw 100vh, 100vw 100vh,
+                100vw 100vh, 100vw 100vh, 100vw 100vh,
+                100vw 100vh;
+            
+            background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+            background-attachment: scroll; 
+            background-position: center top;
+        }
+
+        /* HEADER & HERO */
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
+            position: relative;
+            z-index: 10;
+        }
+        .site-header {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 20px 40px; 
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            justify-self: start; 
+            text-decoration: none; 
+            color: white; 
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            cursor: default;
+        }
+        
+        .logo-container:hover {
+            transform: scale(1.05); 
+        }
+
+        .logo-icon { width: 60px; height: auto; }
+
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title { font-size: 1rem; font-weight: 600; }
+        .logo-subtitle { font-size: 0.8rem; opacity: 0.8; }
+        
+        .nav-pill {
+            display: flex; gap: 25px;
+            background-color: rgba(1, 2, 20, 0.5); 
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+            padding: 12px 35px; 
+            border-radius: 50px;
+            backdrop-filter: blur(50px); 
+            justify-self: center; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .nav-link { text-decoration: none; color: #aaa; font-size: 0.95rem; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { color: white; }
+        
+        .cta-container { display: flex; justify-content: flex-end; justify-self: end; }
+        
+        .join-btn {
+            text-decoration: none; 
+            color: white;
+            background-color: #007bff; 
+            border: 1px solid #007bff;
+            padding: 10px 25px; 
+            border-radius: 50px; 
+            transition: all 0.3s ease;
+            font-weight: 500;
+            white-space: nowrap; 
+        }
+        .join-btn:hover { 
+            background-color: #0066cc; 
+            border-color: #0066cc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+        }
+        
+        .content {
+            flex: 1; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding-bottom: 35vh; 
+            position: relative;
+            z-index: 25; 
+        }
+        h1.hero-title { 
+            font-size: 5rem; 
+            font-weight: 700; 
+            margin-bottom: 0.5rem; 
+            letter-spacing: -0.03em;
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(69, 38, 208, 0.3);
+            margin-top: 0;
+        }
+        .hero-desc { font-size: 1.25rem; color: rgba(200, 220, 255, 0.7); margin-top: 0; margin-bottom: 3rem; font-weight: 300; }
+        
+        .cta-button {
+            background: linear-gradient(90deg, #4526D0, #9470F4); 
+            border: none; padding: 16px 48px; border-radius: 50px;
+            color: white; font-size: 1.1rem; font-weight: 600; cursor: pointer;
+            box-shadow: 0 0 25px rgba(69, 38, 208, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none; 
+            display: inline-block; 
+        }
+        .cta-button:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 0 35px rgba(69, 38, 208, 0.6); 
+            background: linear-gradient(90deg, #5332e3, #a282f7);
+        }
+
+        /* TIMELINE SECTION */
+        .timeline-section { 
+            width: 100%; 
+            display: flex; 
+            justify-content: center; 
+            position: relative; 
+            z-index: 20; 
+            margin-top: -30vh; 
+            padding-top: 150px; 
+            padding-bottom: 80px;
+            background: linear-gradient(180deg, rgba(1, 2, 20, 0) 0%, rgba(1, 2, 20, 0.6) 50%, #010214 100%);
+        }
+        
+        .timeline-track { display: flex; justify-content: space-between; align-items: flex-start; width: 92%; max-width: 1350px; position: relative; }
+        .track-line { position: absolute; top: 75px; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 10%, rgba(255,255,255,0.15) 90%, transparent 100%); z-index: 0; }
+        .timeline-item { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; flex: 1; cursor: pointer; }
+        .month-pill { padding: 8px 24px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.5); margin-bottom: 30px; transition: all 0.3s ease; background: var(--bg-deep); }
+        .star-marker { width: 24px; height: 24px; color: rgba(255, 255, 255, 0.3); background: transparent; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .star-marker svg { width: 100%; height: 100%; transition: fill 0.3s ease; }
+        .event-text { text-align: center; font-size: 0.9rem; color: rgba(255, 255, 255, 0.4); line-height: 1.4; font-weight: 300; transition: all 0.3s ease; }
+        .timeline-item.active .month-pill, .timeline-item:hover .month-pill { color: white; border-color: transparent; background: linear-gradient(var(--bg-deep), var(--bg-deep)) padding-box, linear-gradient(135deg, #ff26be, #00d4ff) border-box; box-shadow: 0 0 15px rgba(255, 38, 190, 0.4), inset 0 0 10px rgba(0, 212, 255, 0.2); }
+        .timeline-item.active .star-marker, .timeline-item:hover .star-marker { transform: scale(1.6); filter: drop-shadow(-2px 0 5px #ff26be) drop-shadow(2px 0 5px #00d4ff); }
+        .timeline-item.active .star-marker svg path, .timeline-item:hover .star-marker svg path { fill: url(#star-fill-gradient) !important; }
+        .timeline-item.active .event-text, .timeline-item:hover .event-text { color: white; text-shadow: 0 0 10px rgba(255,255,255,0.4); }
+
+        /* ABOUT */
+        .about-section { width: 100%; background: var(--bg-deep); padding-top: 20px; padding-bottom: 20px; display: flex; justify-content: center; }
+        .about-container { width: 92%; max-width: 1350px; }
+        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 60px; color: white; letter-spacing: -0.5px; }
+        .info-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+        .info-left { flex: 1; min-width: 300px; }
+        .info-num { display: block; font-size: 0.95rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 15px; }
+        .info-left h3 { font-size: 2.2rem; font-weight: 600; margin: 0; line-height: 1.2; letter-spacing: -0.5px; }
+        .info-right { flex: 1.5; padding-top: 45px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 60px; }
+        .info-right p { font-size: 1.1rem; line-height: 1.7; color: rgba(255, 255, 255, 0.75); font-weight: 300; margin: 0; max-width: 100%; }
+        .info-right strong { color: white; font-weight: 600; }
+        .info-row:last-child .info-right { border-bottom: none; margin-bottom: 0; }
+
+        /* STATS */
+        .stats-footer { 
+            width: 100%; 
+            background-color: rgba(3, 5, 46, 0.5); 
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            padding: 60px 0 80px 0; 
+            display: flex; 
+            justify-content: center; 
+            position: relative; 
+            z-index: 30; 
+        }
+        .stats-footer::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(69, 38, 208, 0.6) 50%, transparent 100%);
+            box-shadow: 0 -2px 10px rgba(69, 38, 208, 0.4);
+        }
+
+        .stats-container { width: 92%; max-width: 1350px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .stat-item { text-align: center; flex: 1; min-width: 200px; position: relative; }
+        .stat-num { font-size: 5rem; font-weight: 500; color: white; margin-bottom: 5px; letter-spacing: -2px; line-height: 1; }
+        .stat-label { font-size: 1.1rem; color: rgba(255, 255, 255, 0.6); font-weight: 300; }
+
+        /* CURRICULUM */
+        .curriculum-section {
+            width: 100%;
+            background-color: var(--section-bg);
+            padding: 80px 0 100px 0;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 30;
+        }
+        .curriculum-container { width: 92%; max-width: 1350px; }
+        
+        .curriculum-header { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 15px; 
+            margin-bottom: 50px; 
+            cursor: pointer; 
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+        
+        .curriculum-header h2 { font-size: 2.2rem; font-weight: 600; color: white; margin: 0; }
+        
+        .curriculum-arrow { 
+            width: 32px; 
+            height: 32px; 
+            color: white; 
+            transform: rotate(90deg); 
+            transition: transform 0.3s ease;
+            margin-top: 5px; 
+        }
+        
+        .curriculum-header:hover {
+            transform: scale(1.05) translateY(-2px);
+        }
+        
+        .curriculum-header:hover .curriculum-arrow {
+            transform: rotate(90deg) translate(5px, 0px); 
+        }
+
+        .curriculum-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        
+        .curriculum-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+        .curriculum-card:hover { 
+            transform: translateY(-6px) scale(1.01); 
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.6), 0 0 15px rgba(69, 38, 208, 0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+            z-index: 10;
+        }
+
+        .card-image-wrapper {
+            width: 100%;
+            height: 240px; 
+            overflow: hidden;
+            background-color: #000;
+        }
+        .card-image-wrapper svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .card-content { padding: 25px; flex: 1; }
+        .card-title { font-size: 1.25rem; font-weight: 600; margin-top: 0; margin-bottom: 20px; color: white; }
+        .card-list { list-style: none; padding: 0; margin: 0; }
+        .card-list li { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 8px; line-height: 1.4; position: relative; padding-left: 12px; }
+        .card-list li::before { content: "-"; position: absolute; left: 0; color: rgba(255, 255, 255, 0.4); }
+
+        /* STORIES SECTION (Testimonials) */
+        .stories-section {
+            position: relative;
+            width: 100%;
+            background: linear-gradient(180deg, #0F1124 0%, #0A0B16 100%);
+            padding: 100px 0;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 30;
+        }
+
+        .vignette {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+            radial-gradient(ellipse 64% 6% at 50% 3%, rgba(72,82,140,0.20) 0%, rgba(12,13,35,0.18) 45%, transparent 100%),
+            radial-gradient(ellipse 56% 3% at 50% 15%, rgba(64,68,126,0.25) 30%, rgba(16,19,39,0.07) 60%, transparent 100%),
+            radial-gradient(ellipse 62% 7% at 49% 94%, rgba(54,58,92,0.16) 15%, rgba(24,27,43,0.07) 70%, transparent 98%);
+            mix-blend-mode: lighten;
+        }
+
+        .stories-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 92%;
+            max-width: 1350px;
+        }
+
+        .stories-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .stories-cards {
+            display: flex;
+            flex-direction: row;
+            gap: 32px;
+            justify-content: center;
+            width: 100%;
+            margin-top: 44px;
+            flex-wrap: nowrap;  
+            overflow-x: auto;   
+            padding-bottom: 20px; 
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        .stories-cards::-webkit-scrollbar {
+            display: none;
+        }
+
+        .story-card {
+            background: rgba(255,255,255,0.04);
+            border-radius: 14px;
+            padding: 28px 32px 22px 32px;
+            box-shadow: 0px 4px 24px rgba(0,0,0,0.35);
+            flex: 1;        
+            min-width: 280px;    
+            min-height: 210px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #E4E7FB;
+            transition: box-shadow 0.15s;
+            box-sizing: border-box;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .story-card:hover {
+            box-shadow: 0px 8px 32px rgba(0,0,0,0.5);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .story-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 36px;
+            margin-top: 0;
+            font-weight: 400;
+            color: #E4E7FB;
+        }
+
+        .story-card .name {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+
+        .story-card .role {
+            color: #C1C4E2;
+            font-size: 0.97rem;
+        }
+
+        /* --- GLOBAL TEAM SECTION WRAPPER --- */
+        .team-section-wrapper {
+            position: relative;
+            z-index: 30;
+            width: 100%;
+            /* Subtle radiating glow from the center */
+            background-image: radial-gradient(circle at center, rgba(100, 149, 237, 0.03) 0%, transparent 70%), 
+                              radial-gradient(circle at top, #111a3b, #000000);
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            padding: 80px 0 100px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .team-section-wrapper h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            font-weight: 600;
+            margin: 0 0 40px 0;
+            color: white;
+        }
+        
+        .team-subheading {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 60px 0 30px 0;
+            text-align: center;
+            color: white;
+            text-transform: capitalize;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* CORE TEAM STYLES (Horizontal Scroll) */
+        .core-team-container {
+            display: flex;
+            flex-wrap: nowrap; 
+            justify-content: flex-start;
+            gap: 15px;
+            width: 92%;
+            max-width: 1350px;
+            padding: 20px 10px;
+            overflow-x: auto;
+            box-sizing: border-box; 
+            -ms-overflow-style: none; 
+            scrollbar-width: none; 
+        }
+        .core-team-container::-webkit-scrollbar { display: none; }
+
+        .team-card {
+            background-color: #05050a; 
+            border: 1px solid #1f2235;
+            border-radius: 12px;
+            min-width: 240px; 
+            flex-shrink: 0; 
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6; 
+        }
+        .team-card .image-container {
+            width: 100%;
+            height: 200px; 
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background-color: #1f2235; 
+            display: flex; justify-content: center; align-items: center;
+            position: relative;
+        }
+        .team-card .image-container img {
+            width: 100%; height: 100%; object-fit: cover; position: relative;
+        }
+        .team-card .role {
+            font-size: 0.85rem; color: #f9f9fa; margin: 0 0 20px 0; text-align: left; line-height: 1.5;
+        }
+        .team-card .team-name { color: white; font-weight: 700; display: block; font-size: 1.1rem; }
+        .team-card .team-designation { color: #B1B1B1; font-weight: normal; font-size: 0.9rem; }
+        
+        /* Shared Footer & Socials for Team Cards */
+        .card-footer {
+            display: flex; justify-content: flex-start; align-items: center;
+            border-top: 1px solid #1f2235; padding-top: 15px;
+        }
+        .social-icons { display: flex; gap: 8px; align-items: center; }
+        .social-icons a {
+            color: #8b9bb4; text-decoration: none; font-size: 0.9rem;
+            transition: color 0.2s; display: flex; align-items: center; gap: 6px;
+        }
+        .social-icons a:hover { color: #3b82f6; }
+
+
+        /* TECHNICAL COORDINATORS STYLES (Horizontal Scroll, Smaller Cards) */
+        .tech-team-container {
+            display: flex;
+            flex-wrap: nowrap; 
+            justify-content: center;
+            gap: 15px;
+            max-width: 100%; 
+            padding: 20px;
+            overflow-x: auto;
+            padding-bottom: 30px; 
+            box-sizing: border-box; 
+            -ms-overflow-style: none; scrollbar-width: none;
+        }
+        .tech-team-container::-webkit-scrollbar { display: none; }
+
+        .tech-card {
+            background-color: #05050a; 
+            border: 1px solid #1f2235;
+            border-radius: 12px;
+            min-width: 220px;
+            flex-shrink: 0; 
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+        .tech-card:hover { transform: translateY(-5px); border-color: #3b82f6; }
+        .tech-card .image-container {
+            width: 100%; height: 180px; border-radius: 8px;
+            overflow: hidden; margin-bottom: 15px; background-color: #1f2235;
+        }
+        .tech-card .image-container img { width: 100%; height: 100%; object-fit: cover; }
+        .tech-card .role { text-align: left; margin: 0 0 20px 0; font-size: 0.85rem; }
+
+
+        /* GENERAL COORDINATORS STYLES (Flex Wrap Grid) */
+        .gen-team-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            width: 95%;
+            max-width: 1400px;
+            padding: 20px;
+        }
+        .gen-card {
+            background-color: #050711; 
+            border: 1px solid rgba(40, 60, 100, 0.3);
+            border-radius: 16px;
+            width: 250px; 
+            padding: 12px;
+            display: flex; flex-direction: column;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .gen-card:hover { transform: translateY(-5px); border-color: rgba(60, 100, 180, 0.5); }
+        .gen-card .profile-img {
+            width: 100%; height: 200px; object-fit: cover;
+            border-radius: 12px; margin-bottom: 15px; background-color: #1a1d29;
+        }
+        .gen-card .info-section { display: flex; flex-direction: column; margin-bottom: 12px; padding-left: 4px; }
+        .gen-card .name { font-size: 1.2rem; font-weight: 600; color: #ffffff; line-height: 1.3; margin-bottom: 5px; }
+        .gen-card .card-footer { margin-top: auto; padding: 0 4px; }
+
+
+        /* COURSE COORDINATORS STYLES (Grid) */
+        .course-team-container {
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px; 
+            width: 95%; 
+            max-width: 1350px;
+            padding: 20px 0; 
+            box-sizing: border-box; 
+        }
+        .course-card {
+            background-color: #05050a; 
+            border: 1px solid #1f2235;
+            border-radius: 12px;
+            padding: 0; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+        .course-card:hover { transform: translateY(-5px); border-color: #3b82f6; }
+        .course-card .image-container {
+            width: 100%; height: 0; padding-bottom: 75%; 
+            border-radius: 12px 12px 0 0; overflow: hidden;
+            background-color: #1f2235; position: relative; margin-bottom: 0;
+        }
+        .course-card .image-container img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+        }
+        .course-card .card-content { padding: 15px; text-align: left; }
+        .course-card .name { font-size: 1rem; font-weight: 600; margin: 0 0 2px 0; color: white; }
+        .course-card .role { font-size: 0.8rem; font-weight: 400; color: #b0b0b0; margin: 0 0 15px 0; }
+        .course-card .card-footer { padding: 0 15px 15px 15px; border-top: 1px solid #1f2235; padding-top: 10px; }
+
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .course-team-container { grid-template-columns: repeat(3, 1fr); }
+            .gen-team-container { justify-content: center; }
+        }
+        @media (max-width: 900px) {
+            .nav-pill { display: none; }
+            .content h1.hero-title { font-size: 3rem; }
+            .timeline-track { overflow-x: auto; justify-content: flex-start; padding-bottom: 20px; }
+            .timeline-item { min-width: 130px; flex: none; }
+            .track-line { width: 850px; }
+            .info-row { flex-direction: column; }
+            .info-right { padding-top: 20px; padding-bottom: 40px; }
+            .stat-num { font-size: 3.5rem; }
+            .site-header { grid-template-columns: 1fr auto; }
+            .cta-container { justify-self: end; }
+            .curriculum-grid { grid-template-columns: 1fr; }
+            .stories-cards { justify-content: flex-start; padding-left: 20px; padding-right: 20px; width: auto; width: 100%; }
+        }
+        @media (max-width: 800px) {
+            .course-team-container { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 450px) {
+            .course-team-container { grid-template-columns: 1fr; }
+        }
+
+        /* --- FOOTER STYLES --- */
+        .footer-container {
+            width: 100%;
+            max-width: 1440px;
+            height: 543px;
+            position: relative;
+            margin: 0 auto;
+            transform: rotate(0.15deg);
+            background-color: #000000;
+            box-shadow: 
+                inset 0 0 0 1px rgba(0, 0, 0, 1),
+                0 4px 4px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            z-index: 40; /* Ensure footer is above other elements */
+        }
+
+        .footer-background {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+        }
+
+        .radiating-effect {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 500px;
+            background: radial-gradient(ellipse at center top, 
+                rgba(14, 15, 35, 0.9) 0%, 
+                rgba(14, 15, 35, 0.6) 20%, 
+                rgba(14, 15, 35, 0.3) 40%, 
+                rgba(14, 15, 35, 0.1) 60%, 
+                transparent 80%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .radiating-effect::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 350px;
+            background: radial-gradient(ellipse at center top, 
+                rgba(14, 15, 35, 0.7) 0%, 
+                rgba(14, 15, 35, 0.4) 25%, 
+                rgba(14, 15, 35, 0.15) 50%, 
+                transparent 75%);
+        }
+
+        .radiating-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 250px;
+            background: radial-gradient(ellipse at center top, 
+                rgba(14, 15, 35, 0.5) 0%, 
+                rgba(14, 15, 35, 0.2) 30%, 
+                transparent 70%);
+        }
+
+        /* Specific footer logo styles */
+        .footer-logo-container {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-logo-container > img {
+            width: 230px;
+            height: 38px;
+            flex-shrink: 0;
+        }
+
+        .founded-text {
+            align-self: flex-end;
+            margin-left: 75px;
+        }
+
+        .founded-text img {
+            width: 369px;
+            height: 59px;
+        }
+
+        .frame-962 {
+            position: absolute;
+            bottom: 150px;
+            right: 80px;
+            z-index: 2;
+        }
+
+        .frame-962 img {
+            width: 494px;
+            height: 308px;
+        }
+
+        .copyright {
+            position: absolute;
+            bottom: 40px;
+            right: 80px;
+            z-index: 2;
+        }
+
+        .copyright img {
+            width: 429px;
+            height: 15px;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            padding: 60px 80px 40px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Follow Us Section */
+        .follow-us-section {
+            position: absolute;
+            bottom: 40px;
+            left: 50px;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+
+        .follow-us-text {
+            color: #DAD9F1;
+            font-size: 1.02rem;
+            letter-spacing: 0.04em;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .follow-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #FFFFFF;
+            background: none;
+            font-weight: 600;
+            font-size: 1.01rem;
+            border-radius: 5px;
+            transition: color 0.16s, background 0.16s;
+            padding: 6px 12px;
+        }
+
+        .follow-link:hover {
+            color: #e25f9d;
+            background: rgba(240,240,243,0.06);
+        }
+
+        .follow-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Updated styles for grey unbolded text */
+        .link-text {
+            color: #8b9bb4; /* Grey color */
+            font-weight: normal; /* Unbolded */
+        }
+
+        /* Footer Responsive Helper */
+        @media (max-width: 900px) {
+            .footer-container {
+                height: auto;
+                min-height: 543px;
+                padding-bottom: 40px;
+            }
+            .footer-logo-container {
+                position: relative;
+                top: 20px;
+                left: 20px;
+                margin-bottom: 40px;
+            }
+            .founded-text img, .footer-logo-container > img {
+                width: 100%;
+                height: auto;
+                max-width: 300px;
+            }
+            .founded-text { margin-left: 0; }
+            
+            .frame-962 {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                display: flex;
+                justify-content: center;
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+            .frame-962 img { width: 90%; height: auto; }
+
+            .follow-us-section {
+                position: relative;
+                bottom: auto;
+                left: 20px;
+                margin-bottom: 40px;
+            }
+            .copyright {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                text-align: center;
+                padding: 0 20px;
+            }
+            .copyright img { width: 100%; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-container">
+        
+        <header class="site-header">
+            <div class="logo-container">
+                <svg class="logo-icon" width="63" height="30" viewBox="0 0 63 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5425 0.130047C13.7421 0.196398 11.9911 0.521005 10.3701 1.08786C7.3993 2.12841 4.84145 3.95489 2.98812 6.3611C1.86178 7.82352 1.02536 9.49219 0.545324 11.235C0.273917 12.2187 0.118898 13.1807 0.0516073 14.2943C0.0376628 14.5274 0.0346126 15.3239 0.0464511 15.5941C0.133848 17.5796 0.610459 19.429 1.49704 21.2243C1.60464 21.4421 1.90145 21.9842 2.03044 22.1988C2.70378 23.3198 3.47606 24.2961 4.4306 25.2347C4.62374 25.4246 5.10091 25.8579 5.29743 26.0218C6.46013 26.9938 7.68307 27.7642 9.05374 28.3864C11.742 29.6089 14.7391 30.1083 17.7608 29.8373C20.8501 29.5613 23.8079 28.4497 26.2416 26.6512C26.5501 26.4228 26.56 26.4158 26.6816 26.3024C26.6882 26.2967 26.7195 26.263 26.7397 26.2469C26.8431 26.1644 32.1592 21.2459 36.1488 17.5421C38.5668 15.2972 39.9214 14.0452 39.9266 14.0499C39.9317 14.0546 39.9197 14.0437 39.9129 14.0532C39.9035 14.0675 40.5074 14.8323 46.0762 21.8076C51.1224 28.1284 52.2519 29.5391 52.3119 29.5943C52.3885 29.6644 52.4654 29.7124 52.5668 29.7508C52.6428 29.7799 52.8844 29.8267 53.0123 29.8366C53.0813 29.8419 54.4293 29.8408 57.3256 29.8308C61.2451 29.8182 61.5424 29.8166 61.5952 29.8038C61.8155 29.7527 61.9803 29.6637 62.1331 29.5148C62.4945 29.1614 62.5991 28.6065 62.394 28.125C62.34 27.9979 62.2633 27.8835 62.1543 27.7661C62.1114 27.7196 42.4937 0.749255 42.4112 0.623043C42.3656 0.552838 42.2592 0.450393 42.1811 0.400816C42.0516 0.318977 41.8974 0.260117 41.7184 0.225028C41.6438 0.211 41.6027 0.207949 41.4426 0.208368C41.1883 0.208245 41.1224 0.22027 40.8273 0.319025C40.7195 0.355656 40.6408 0.39458 40.5776 0.441366C40.5494 0.461986 37.0754 3.89809 32.8559 8.07655C28.6372 12.2558 24.3767 16.4746 23.3895 17.4523C22.4023 18.43 21.5287 19.2983 21.4476 19.3815C21.1786 19.6579 21.1 19.7245 20.7188 19.9918C20.1462 20.3939 19.7992 20.5987 19.322 20.8141C18.5138 21.1805 17.7052 21.3825 16.7628 21.4545C16.5822 21.4684 15.9683 21.47 15.7824 21.4571C14.7274 21.3848 13.7712 21.1376 12.9268 20.7195C12.325 20.4216 11.8121 20.0721 11.3288 19.6301C10.7753 19.1242 10.3449 18.5714 10.0016 17.9267C9.60145 17.1747 9.37681 16.3922 9.30163 15.4869C9.28664 15.3139 9.28529 14.7979 9.29855 14.6296C9.33669 14.1585 9.4076 13.7625 9.52891 13.3489C9.93203 11.9753 10.8261 10.7592 12.0705 9.89232C13.0209 9.23001 14.1713 8.79716 15.355 8.65657C15.6897 8.61698 15.7933 8.61115 16.2411 8.60998C16.6889 8.6088 16.7899 8.6141 17.1231 8.65194C18.024 8.75307 18.9092 9.02416 19.7057 9.44244C21.3339 10.2963 22.5278 11.7297 23.0004 13.3958C23.0212 13.47 23.0471 13.5648 23.0566 13.6058C23.0731 13.6714 23.0809 13.6871 23.1238 13.7423C23.2552 13.9103 23.4208 14.0237 23.6119 14.0753C23.7121 14.1027 23.8808 14.1094 23.9972 14.0901C24.1478 14.066 24.3171 14.0055 24.4317 13.9357C24.4599 13.919 24.53 13.8643 24.5881 13.8143C24.7564 13.6685 29.3213 9.29558 29.3127 9.28767C29.305 9.2806 29.3553 9.2196 29.375 9.21165C29.3844 9.20849 29.5663 9.03495 29.9455 8.66809C30.0702 8.54768 30.1393 8.46217 30.1921 8.36088C30.2876 8.1781 30.3136 7.99156 30.2711 7.7886C30.2616 7.7404 30.2461 7.70882 30.1799 7.60313C29.6545 6.75745 28.9982 5.9113 28.3002 5.18064C27.8709 4.73054 27.3525 4.2507 26.8703 3.85687C24.5974 2.00038 21.8286 0.779697 18.8513 0.322872C18.1318 0.211762 17.445 0.149558 16.694 0.126239C16.4269 0.118247 15.8113 0.119861 15.5425 0.130047ZM41.5288 0.41754C41.5382 0.430158 41.5271 0.434927 41.5014 0.429463C41.4834 0.424769 41.4808 0.422406 41.4911 0.416057C41.5073 0.406533 41.5219 0.407285 41.5288 0.41754ZM41.0265 1.50851C41.0333 1.51876 41.0222 1.51879 41.0051 1.50856C40.9939 1.50227 40.9939 1.50069 41.0068 1.50066C41.0145 1.50064 41.0239 1.50378 41.0265 1.50851ZM41.8014 1.52228C41.7945 1.52625 41.7825 1.52944 41.7757 1.52946C41.7671 1.52944 41.7688 1.52711 41.7799 1.52234C41.8031 1.5128 41.8168 1.51276 41.8014 1.52228ZM16.7667 1.7064C19.3552 1.8055 21.7638 2.49692 23.9342 3.76421C25.3713 4.60355 26.6791 5.7143 27.7124 6.97431C27.9418 7.25497 28.3498 7.79677 28.3499 7.82207C28.3499 7.82997 24.2983 11.7227 24.2846 11.7283C24.2812 11.7291 24.258 11.6888 24.233 11.6376C24.1676 11.505 24.0033 11.2051 23.9216 11.0687C23.6826 10.671 23.3964 10.2783 23.0846 9.92034C21.7201 8.35303 19.7874 7.30716 17.6538 6.98245C16.9275 6.87136 16.1586 6.84574 15.4061 6.9054C14.8865 6.94704 14.3062 7.04182 13.8074 7.1664C12.4701 7.5002 11.2362 8.12844 10.2119 8.99639C10.0248 9.15568 9.69941 9.46233 9.54318 9.62867C8.33756 10.9064 7.61642 12.4547 7.42909 14.1643C7.37391 14.6654 7.3686 15.2533 7.41527 15.7368C7.56924 17.3239 8.20499 18.8022 9.27339 20.0534C9.6736 20.5217 10.1765 20.9906 10.681 21.3638C12.4619 22.6835 14.6922 23.3058 16.9812 23.1236C18.2053 23.0256 19.4108 22.6842 20.4881 22.1291C21.0559 21.8368 21.6021 21.4766 22.0959 21.0684C22.388 20.8274 22.8279 20.3988 23.0729 20.1168C23.1411 20.0384 23.6287 19.5504 23.633 19.5567C24.2514 20.2971 27.0902 23.7451 27.0876 23.7514C27.0851 23.7569 27.0399 23.8052 26.9869 23.8599C25.4858 25.4118 23.6447 26.6074 21.573 27.3762C20.1847 27.891 18.7103 28.2023 17.2088 28.2987C16.7414 28.3284 16.1078 28.3379 15.6677 28.3225C12.9379 28.2253 10.4436 27.5033 8.23713 26.1721C7.59827 25.7866 7.03982 25.3866 6.42888 24.8778C6.23411 24.7155 5.76122 24.2814 5.57061 24.0899C4.46324 22.9771 3.59093 21.7364 2.94946 20.3631C2.35019 19.0799 1.98018 17.721 1.83423 16.265C1.78938 15.8124 1.77295 15.4252 1.77757 14.8982C1.78161 14.4818 1.78561 14.3743 1.81214 14.0408C1.97282 11.9717 2.65937 9.96596 3.81826 8.18026C5.21592 6.02498 7.25592 4.27016 9.68283 3.13306C11.5034 2.28043 13.4808 1.80035 15.538 1.71042C15.7649 1.70034 16.5449 1.69829 16.7667 1.7064ZM43.228 4.53702C44.2576 5.9535 45.1005 7.11522 45.1023 7.11993C45.1031 7.12388 43.9901 8.16114 42.6295 9.42346L40.1542 11.7183L38.2455 9.32671C37.1958 8.01143 36.3359 6.93117 36.3342 6.92642C36.3307 6.91458 41.3427 1.94939 41.3505 1.95648C41.353 1.95964 42.1986 3.12056 43.228 4.53702ZM37.0317 10.4243C38.0582 11.7104 38.9121 12.7788 38.9275 12.7993L38.9568 12.8372L33.7005 17.7153C30.8093 20.3976 28.434 22.5997 28.4212 22.6085L28.3989 22.6235L26.6158 20.4655L24.8327 18.3082L24.8694 18.2694C24.9668 18.1664 35.1539 8.08317 35.1591 8.08473C35.1625 8.08553 36.0052 9.1382 37.0317 10.4243ZM53.2103 18.2663C57.1615 23.7003 60.3939 28.1531 60.3939 28.1618C60.3948 28.1776 60.3892 28.1777 56.876 28.1884L53.3572 28.1992L47.3483 20.6719C44.0439 16.5322 41.3 13.0958 41.251 13.035C41.1763 12.942 41.1414 12.915 41.1303 12.9237C41.1209 12.9309 41.1343 12.9421 41.1266 12.935C41.1189 12.9279 41.6835 12.4002 43.5634 10.6561C44.9096 9.40722 46.0149 8.38577 46.0188 8.38576C46.024 8.38655 49.2603 12.8323 53.2103 18.2663Z" fill="white"/>
+                </svg>
+
+                <div class="logo-text">
+                    <span class="logo-title">Consulting & Analytics Club</span>
+                    <span class="logo-subtitle">IIT Guwahati</span>
+                </div>
+            </div>
+
+            <nav class="nav-pill">
+                <a href="https://www.caciitg.com/" class="nav-link active" target="_blank" rel="noopener noreferrer">Home</a>
+                <a href="https://www.caciitg.com/#about" class="nav-link" target="_blank" rel="noopener noreferrer">About Us</a>
+                <a href="https://www.caciitg.com/#events" class="nav-link" target="_blank" rel="noopener noreferrer">Events</a>
+                <a href="#team" class="nav-link">Our team</a>
+            </nav>
+
+            <div class="cta-container">
+                <a href="https://www.caciitg.com/wc/course/" class="join-btn" target="_blank" rel="noopener noreferrer">Access Course Materials</a>
+            </div>
+        </header>
+
+        <div class="content">
+            <h1 class="hero-title">Winter Consulting</h1>
+            <p class="hero-desc">Discover what it takes to be a consultant</p>
+            <a href="https://luma.com/59z6htbo" class="cta-button" target="_blank" rel="noopener noreferrer">Register now</a>
+        </div>
+    </div>
+
+    <div class="timeline-section">
+        <svg width="0" height="0" style="position: absolute; visibility: hidden;">
+          <defs>
+            <linearGradient id="star-fill-gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+              <stop offset="0%" style="stop-color:#ff26be" /> 
+              <stop offset="100%" style="stop-color:#00d4ff" /> 
+            </linearGradient>
+          </defs>
+        </svg>
+    
+        <div class="timeline-track">
+            <div class="track-line"></div>
+            <div class="timeline-item"><div class="month-pill">April</div><div class="star-marker"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" /></svg></div><div class="event-text">Recruitment<br>Event</div></div>
+            <div class="timeline-item"><div class="month-pill">May</div><div class="star-marker"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" /></svg></div><div class="event-text">Summer<br>Analytics</div></div>
+            <div class="timeline-item"><div class="month-pill">June</div><div class="star-marker"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" /></svg></div><div class="event-text">Gradient<br>Ascent</div></div>
+            <div class="timeline-item"><div class="month-pill">Aug</div><div class="star-marker"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" /></svg></div><div class="event-text">Krack the case</div></div>
+            <div class="timeline-item"><div class="month-pill">Sept</div><div class="star-marker"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" /></svg></div><div class="event-text">Business<br>casebook</div></div>
+            <div class="timeline-item active"><div class="month-pill">Nov</div><div class="star-marker"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" /></svg></div><div class="event-text">Winter<br>Consulting</div></div>
+            <div class="timeline-item"><div class="month-pill">Dec & Jan</div><div class="star-marker"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" /></svg></div><div class="event-text">Strategy Storm<br>& Convolve</div></div>
+        </div>
+    </div>
+
+    <div class="about-section">
+        <div class="about-container">
+            <h2 class="section-title">About the course</h2>
+            <div class="info-row"><div class="info-left"><span class="info-num">01.</span><h3>Why Winter<br>Consulting?</h3></div><div class="info-right"><p>With countless courses online, navigating non-tech fields like consulting and product management can be challenging. <strong>Winter Consulting</strong> offers a focused <strong>6-week program</strong> designed to cut through the noise and build a strong foundation in both domains.</p></div></div>
+            <div class="info-row"><div class="info-left"><span class="info-num">02.</span><h3>What does it<br>cover?</h3></div><div class="info-right"><p>Our 6-week intensive program covers the core principles of consulting and product management, offering a clear, structured path to master the essentials and gain practical, industry-relevant skills.</p></div></div>
+            <div class="info-row"><div class="info-left"><span class="info-num">03.</span><h3>Who are we?</h3></div><div class="info-right"><p>We are the Consulting & Analytics Club, IIT Guwahati, conducting this flagship Winter Consulting program each year. Initially created to train IIT Guwahati students, the course now reaches 25K+ learners across 35+ countries.</p></div></div>
+        </div>
+    </div>
+
+    <div class="stats-footer">
+        <div class="stats-container">
+            <div class="stat-item"><div class="stat-num">5K+</div><div class="stat-label">Registrations</div></div>
+            <div class="stat-item"><div class="stat-num">40+</div><div class="stat-label">Countries</div></div>
+            <div class="stat-item"><div class="stat-num">2K+</div><div class="stat-label">Organisations</div></div>
+            <div class="stat-item"><div class="stat-num">150</div><div class="stat-label">Hours of coursework</div></div>
+        </div>
+    </div>
+
+    <section class="curriculum-section">
+        <div class="curriculum-container">
+            
+            <div class="curriculum-header" onclick="document.getElementById('curriculum-cards').scrollIntoView({behavior: 'smooth'})">
+                <h2>Curriculum</h2>
+                <svg class="curriculum-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+
+            <div class="curriculum-grid" id="curriculum-cards">
+                
+                <div class="curriculum-card">
+                    <div class="card-image-wrapper">
+                        <svg width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+                            <rect width="600" height="400" fill="url(#grad1)" />
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#3d1b4b;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#a84b3e;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(150, 100) scale(1.0)">
+                                <line x1="0" y1="200" x2="300" y2="200" stroke="rgba(255,255,255,0.3)" stroke-width="6"/>
+                                <line x1="0" y1="0" x2="0" y2="200" stroke="rgba(255,255,255,0.3)" stroke-width="6"/>
+                                <polyline points="20,180 80,140 140,160 200,80 280,40" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="20" cy="180" r="6" fill="white"/>
+                                <circle cx="80" cy="140" r="6" fill="white"/>
+                                <circle cx="140" cy="160" r="6" fill="white"/>
+                                <circle cx="200" cy="80" r="6" fill="white"/>
+                                <circle cx="280" cy="40" r="6" fill="white"/>
+                                <text x="140" y="-10" font-family="Arial, sans-serif" font-size="60" fill="white" font-weight="bold" opacity="0.6">$</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Fundamentals of Economics</h3>
+                        <ul class="card-list">
+                            <li>Microeconomics & Macroeconomics</li><li>Supply and Demand</li><li>Price Elasticity</li><li>Market Structures</li><li>Unit Economics</li><li>Economic Growth</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="curriculum-card">
+                    <div class="card-image-wrapper">
+                        <svg width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+                            <rect width="600" height="400" fill="url(#grad2)" />
+                            <defs>
+                                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#6a3aff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#1a1a2e;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(200, 80) scale(1.0)">
+                                <rect x="0" y="0" width="200" height="260" rx="20" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="4"/>
+                                <rect x="25" y="30" width="150" height="50" rx="5" fill="rgba(255,255,255,0.3)"/>
+                                <circle cx="50" cy="120" r="15" fill="rgba(255,255,255,0.5)"/>
+                                <circle cx="100" cy="120" r="15" fill="rgba(255,255,255,0.5)"/>
+                                <circle cx="150" cy="120" r="15" fill="rgba(255,255,255,0.5)"/>
+                                
+                                <circle cx="50" cy="170" r="15" fill="rgba(255,255,255,0.5)"/>
+                                <circle cx="100" cy="170" r="15" fill="rgba(255,255,255,0.5)"/>
+                                <circle cx="150" cy="170" r="15" fill="rgba(255,255,255,0.5)"/>
+                                
+                                <circle cx="50" cy="220" r="15" fill="rgba(255,255,255,0.5)"/>
+                                <circle cx="100" cy="220" r="15" fill="rgba(255,255,255,0.5)"/>
+                                <circle cx="150" cy="220" r="15" fill="#4caf50" opacity="0.8"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Maths Behind Business</h3>
+                        <ul class="card-list">
+                            <li>Financial Modeling</li><li>Excel Basics</li><li>Bonds & Stocks</li><li>Statistical Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="curriculum-card">
+                    <div class="card-image-wrapper">
+                        <svg width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+                            <rect width="600" height="400" fill="url(#grad3)" />
+                            <defs>
+                                <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#a2b9ff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#2f3e8f;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(180, 80)">
+                                <circle cx="80" cy="80" r="60" stroke="white" stroke-width="15" fill="none" stroke-dasharray="30 15" opacity="0.4"/>
+                                <circle cx="80" cy="80" r="25" fill="white" opacity="0.4"/>
+                                
+                                <circle cx="160" cy="160" r="70" stroke="white" stroke-width="12" fill="rgba(255,255,255,0.1)"/>
+                                <line x1="210" y1="210" x2="280" y2="280" stroke="white" stroke-width="25" stroke-linecap="round"/>
+                                <line x1="130" y1="160" x2="190" y2="160" stroke="white" stroke-width="6" opacity="0.8"/>
+                                <line x1="130" y1="140" x2="190" y2="140" stroke="white" stroke-width="6" opacity="0.8"/>
+                                <line x1="130" y1="180" x2="170" y2="180" stroke="white" stroke-width="6" opacity="0.8"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Consulting Tools</h3>
+                        <ul class="card-list">
+                            <li>Refresher on Corporate Finance</li><li>Issue Trees and MECE Framework</li><li>Market Sizing & Guesstimates</li><li>SWOT, PESTEL & Porter's Five Forces Analysis</li><li>3Cs & 4Ps Frameworks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="curriculum-card">
+                    <div class="card-image-wrapper">
+                         <svg width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+                            <rect width="600" height="400" fill="url(#grad4)" />
+                            <defs>
+                                <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#d48bbd;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#5e3b6d;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(100, 50)">
+                                <rect x="150" y="20" width="100" height="60" rx="10" fill="none" stroke="white" stroke-width="4"/>
+                                <line x1="200" y1="80" x2="200" y2="130" stroke="white" stroke-width="4"/>
+                                <line x1="100" y1="130" x2="300" y2="130" stroke="white" stroke-width="4"/>
+                                
+                                <line x1="100" y1="130" x2="100" y2="160" stroke="white" stroke-width="4"/>
+                                <rect x="50" y="160" width="100" height="60" rx="10" fill="none" stroke="white" stroke-width="4"/>
+
+                                <line x1="300" y1="130" x2="300" y2="160" stroke="white" stroke-width="4"/>
+                                <rect x="250" y="160" width="100" height="60" rx="10" fill="none" stroke="white" stroke-width="4"/>
+                                
+                                <line x1="100" y1="220" x2="100" y2="250" stroke="white" stroke-width="4" stroke-dasharray="8 8"/>
+                                <line x1="300" y1="220" x2="300" y2="250" stroke="white" stroke-width="4" stroke-dasharray="8 8"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Case Frameworks</h3>
+                        <ul class="card-list">
+                            <li>Market and User Research Tools</li><li>Target Audience & User Personas</li><li>Profitability and Pricing</li><li>Market Entry</li><li>Growth Strategy</li><li>Mergers & Acquisitions</li><li>Private Equity</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="curriculum-card">
+                    <div class="card-image-wrapper">
+                        <svg width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+                            <rect width="600" height="400" fill="url(#grad5)" />
+                            <defs>
+                                <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#ff7e5f;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#8b0000;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(300, 200)">
+                                <circle cx="0" cy="0" r="100" fill="none" stroke="white" stroke-width="15" opacity="0.3"/>
+                                <circle cx="0" cy="0" r="60" fill="none" stroke="white" stroke-width="15" opacity="0.6"/>
+                                <circle cx="0" cy="0" r="20" fill="white"/>
+                                <line x1="100" y1="100" x2="20" y2="20" stroke="white" stroke-width="10" stroke-linecap="round"/>
+                                <path d="M20 20 L50 20 L20 50 Z" fill="white"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Strategic Management Tools</h3>
+                        <ul class="card-list">
+                            <li>Value Chain Analysis</li><li>BCG Matrix</li><li>Growth Share Matrix</li><li>Balanced Scorecard</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="curriculum-card">
+                    <div class="card-image-wrapper">
+                        <svg width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+                            <rect width="600" height="400" fill="url(#grad6)" />
+                            <defs>
+                                <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#5b4b8a;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#d1c4e9;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(300, 200) scale(1.5)">
+                                <path d="M-40 -60 C-40 -90, 40 -90, 40 -60 C40 -30, 20 -10, 20 20 L-20 20 C-20 -10, -40 -30, -40 -60 Z" fill="none" stroke="white" stroke-width="6"/>
+                                <line x1="-15" y1="30" x2="15" y2="30" stroke="white" stroke-width="4"/>
+                                <line x1="-15" y1="40" x2="15" y2="40" stroke="white" stroke-width="4"/>
+                                <path d="M-10 50 L10 50 L5 60 L-5 60 Z" fill="white"/>
+                                <line x1="0" y1="-110" x2="0" y2="-130" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                                <line x1="60" y1="-90" x2="75" y2="-105" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                                <line x1="-60" y1="-90" x2="-75" y2="-105" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Product Frameworks</h3>
+                        <ul class="card-list">
+                            <li>Market Research</li><li>Product Roadmapping</li><li>Prioritization Frameworks</li><li>Objectives & Key Results for Product Management</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="curriculum-card">
+                    <div class="card-image-wrapper">
+                        <svg width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+                            <rect width="600" height="400" fill="url(#grad7)" />
+                            <defs>
+                                <linearGradient id="grad7" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#74ebd5;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#ACB6E5;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(300, 200)">
+                                <ellipse cx="0" cy="-60" rx="80" ry="20" fill="none" stroke="white" stroke-width="6"/>
+                                <path d="M-80 -60 V-20 A80 20 0 0 0 80 -20 V-60" fill="none" stroke="white" stroke-width="6"/>
+                                <ellipse cx="0" cy="-20" rx="80" ry="20" fill="rgba(255,255,255,0.2)"/>
+                                
+                                <path d="M-80 0 V40 A80 20 0 0 0 80 40 V0" fill="none" stroke="white" stroke-width="6"/>
+                                <ellipse cx="0" cy="40" rx="80" ry="20" fill="rgba(255,255,255,0.2)"/>
+
+                                <path d="M-80 60 V100 A80 20 0 0 0 80 100 V60" fill="none" stroke="white" stroke-width="6"/>
+                                <ellipse cx="0" cy="100" rx="80" ry="20" fill="rgba(255,255,255,0.2)"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Business Intelligence & SQL</h3>
+                        <ul class="card-list">
+                            <li>Data Analysis for Decision Making</li><li>Introduction to SQL</li><li>Database Management</li><li>KPI Development</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="curriculum-card">
+                    <div class="card-image-wrapper">
+                        <svg width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+                            <rect width="600" height="400" fill="url(#grad8)" />
+                            <defs>
+                                <linearGradient id="grad8" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FF416C;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FF4B2B;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(200, 50)">
+                                <rect x="0" y="0" width="200" height="280" rx="10" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="6"/>
+                                <rect x="50" y="-20" width="100" height="40" rx="5" fill="rgba(255,255,255,0.8)"/>
+                                <circle cx="100" cy="-10" r="10" fill="#333"/>
+                                <line x1="40" y1="60" x2="160" y2="60" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+                                <line x1="40" y1="100" x2="160" y2="100" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+                                <line x1="40" y1="140" x2="160" y2="140" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+                                <path d="M140 50 L150 70 L170 40" stroke="white" stroke-width="6" fill="none"/>
+                                <path d="M140 90 L150 110 L170 80" stroke="white" stroke-width="6" fill="none"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Assignments and Projects</h3>
+                        <ul class="card-list">
+                            <li>Capstone Project</li><li>Exercises and Quizzes</li><li>Market & Industry Analysis Reports</li><li>Case Studies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="curriculum-card">
+                    <div class="card-image-wrapper">
+                        <svg width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+                            <rect width="600" height="400" fill="url(#grad9)" />
+                            <defs>
+                                <linearGradient id="grad9" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#333399;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FF00CC;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(150, 80)">
+                                <circle cx="150" cy="100" r="30" fill="white"/>
+                                <path d="M110 160 Q150 180 190 160 V180 H110 Z" fill="white"/>
+                                <rect x="50" y="20" width="200" height="150" rx="10" fill="none" stroke="white" stroke-width="8"/>
+                                <path d="M20 190 L280 190 L300 220 H0 Z" fill="rgba(255,255,255,0.3)" stroke="white" stroke-width="4"/>
+                                <path d="M220 50 Q280 50 280 90 Q280 120 240 120 L220 140 L220 120 Q180 120 180 90 Q180 50 220 50" fill="white" opacity="0.8"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Webinars, Mentorship, Workshops</h3>
+                        <ul class="card-list">
+                            <li>AMA sessions</li><li>Peer Learning Experience</li><li>Webinars from Industry Expert</li><li>Industry Standard Workshops</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="stories-section">
+        <div class="vignette"></div>
+        <div class="stories-container">
+            <h2 class="stories-title">Stories that Inspire</h2>
+            <div class="stories-cards">
+                <div class="story-card">
+                    <p>"I loved the course a lot. I have attended previous sessions of your club before as well so I know that you guys put in a lot of hardwork. So thanks a lot for this course. I loved the videos of the topics, they were fun to watch and learn from."</p>
+                    <div>
+                        <div class="name">Avantika Garg</div>
+                        <div class="role">Founder, Estrategia</div>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <p>"It was an amazing course. Loved it to the core."</p>
+                    <div>
+                        <div class="name">Varshaa Dhanasekar</div>
+                        <div class="role">Analyst, Cognizant</div>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <p>"Loved the assignments and the curated study material. It helped me a lot to consolidate my learning about consulting."</p>
+                    <div>
+                        <div class="name">Shyamil Nimkar</div>
+                        <div class="role">Business Analyst, Merkle Sokrati</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="team-section-wrapper" id="team">
+        <h1>Meet The Team</h1>
+
+        <div class="core-team-container">
+            <div class="team-card">
+                <div class="image-container"><img src="Frame 926.jpg" alt="Abhisekh Das"></div>
+                <p class="role"><span class="team-name">Abhisekh Das</span><br><span class="team-designation">Secretary</span></p>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/abhishek-das-iitg/?originalSubdomain=in" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="team-card">
+                <div class="image-container"><img src="Frame 969.jpg" alt="Poorvi Panjwani"></div>
+                <p class="role"><span class="team-name">Poorvi Panjwani</span><br><span class="team-designation">Overall Coordinator</span></p>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/poorvi-panjwani-0306732a1/?originalSubdomain=in" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="team-card">
+                <div class="image-container"><img src="Frame 970.png" alt="Kahaan Soni"></div>
+                <p class="role"><span class="team-name">Kahaan Soni</span><br><span class="team-designation">Consulting Head</span></p>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/kahaan-soni-327303169/?originalSubdomain=in" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="team-card">
+                <div class="image-container"><img src="Frame 971.jpeg" alt="Pranjal Soni"></div>
+                <p class="role"><span class="team-name">Pranjal Soni</span><br><span class="team-designation">Product & Business Strategy Head</span></p>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/pranjalsoniii695/?originalSubdomain=in" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="team-card">
+                <div class="image-container"><img src="Frame 972.jpg" alt="Pulkit Garg"></div>
+                <p class="role"><span class="team-name">Pulkit Garg</span><br><span class="team-designation">Outreach Head</span></p>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/g-pulkit/?originalSubdomain=in" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+        </div>
+
+        <h2 class="team-subheading">Technical Coordinators</h2>
+        <div class="tech-team-container">
+            <div class="tech-card">
+                <div class="image-container"><img src="Screenshot_20251106_210046 - Swayam Kapila.jpg" alt="Swayam Kapila"></div>
+                <p class="role"><span class="team-name">Swayam Kapila</span><br><span class="team-designation">Technical Coordinator</span></p>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/swayam-kapila-b6b375311/" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="tech-card">
+                <div class="image-container"><img src="WhatsApp Image 2025-11-03 at 14.53.17_93d6a844 - Master_OD.jpg" alt="Dhairiya Nisar"></div>
+                <p class="role"><span class="team-name">Dhairiya Nisar</span><br><span class="team-designation">Technical Coordinator</span></p>
+                <div class="card-footer"><div class="social-icons"><a href="http://www.linkedin.com/in/dhairya-nisar-82854b313" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="tech-card">
+                <div class="image-container"><img src="WhatsApp Image 2025-10-29 at 11.10.46 PM - Ankit.jpeg" alt="Ankit Sinha"></div>
+                <p class="role"><span class="team-name">Ankit Sinha</span><br><span class="team-designation">Technical Coordinator</span></p>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/ankit-sinha-1a077931a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="tech-card">
+                <div class="image-container"><img src="WhatsApp Image 2025-10-29 at 22.07.48 - YASH RAJ.jpeg" alt="Yash Raj"></div>
+                <p class="role"><span class="team-name">Yash Raj</span><br><span class="team-designation">Technical Coordinator</span></p>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/yash-raj-890b591b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="tech-card">
+                <div class="image-container"><img src="IMG_20251029_220935 - Dhairya Shivhare.jpg" alt="Dhairya Shivhare"></div>
+                <p class="role"><span class="team-name">Dhairya Shivhare</span><br><span class="team-designation">Technical Coordinator</span></p>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/dhairya-shivhare-957b861aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+        </div>
+
+        <h2 class="team-subheading">General Coordinators</h2>
+        <div class="gen-team-container">
+            <div class="gen-card">
+                <img src="WhatsApp Image 2025-10-27 at 10.42.42 PM - Aarya Shisode.jpeg.jpg" alt="Aarya Shisode" class="profile-img">
+                <div class="info-section"><div class="name">Aarya Shisode</div></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/aarya-shisode-27ab1931b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="gen-card">
+                <img src="WhatsApp Image 2025-10-27 at 22.51.07 - Achyuth A.jpeg.jpg" alt="Achyuth A" class="profile-img">
+                <div class="info-section"><div class="name">Achyuth A</div></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/achyuth2005/" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="gen-card">
+                <img src="IMG_20250330_234831 - Turvi Ahuja.jpg" alt="Turvi Ahuja" class="profile-img">
+                <div class="info-section"><div class="name">Turvi Ahuja</div></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/turvi-ahuja-a407b4328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="gen-card">
+                <img src="PicRetouch_20250423_023730118 - Keerthana M.jpg" alt="Keerthana Mahesh" class="profile-img">
+                <div class="info-section"><div class="name">Keerthana Mahesh</div></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/keerthana-mahesh-677243261?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="gen-card">
+                <img src="WhatsApp Image 2025-10-28 at 17.28.53 - Sajilee Khurana.jpeg.jpg" alt="Sajilee Khurana" class="profile-img">
+                <div class="info-section"><div class="name">Sajilee Khurana</div></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/sajilee-khurana-95b167337?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="gen-card">
+                <img src="Picsart_25-10-13_14-01-03-886 - Soumya Sharma.jpg" alt="Soumya Sharma" class="profile-img">
+                <div class="info-section"><div class="name">Soumya Sharma</div></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/soumya-sharma0" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="gen-card">
+                <img src="20250715_204803 - Bhumika.jpg" alt="Bhumika" class="profile-img">
+                <div class="info-section"><div class="name">Bhumika</div></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/bhumika-409740347?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="gen-card">
+                <img src="IMG-20251029-WA0035 - Yashvi Mehta.jpg" alt="Yashvi Mehta" class="profile-img">
+                <div class="info-section"><div class="name">Yashvi Mehta</div></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/yashvi-mehta-91b8b633b" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="gen-card">
+                <img src="IMG_20251030_131012 - Eashita Karmakar.png" alt="Eashita Karmakar" class="profile-img">
+                <div class="info-section"><div class="name">Eashita Karmakar</div></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/eashita-karmakar" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="gen-card">
+                <img src="20250125_122702 - Kunchit.jpg" alt="Kunchit Pujari" class="profile-img">
+                <div class="info-section"><div class="name">Kunchit Pujari</div></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/kunchit-pujari-20311431a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="gen-card">
+                <img src="IMG_20250414_001622_497 - Yatharth.webp" alt="Yatharth Kabra" class="profile-img">
+                <div class="info-section"><div class="name">Yatharth Kabra</div></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/yatharth-kabra-7b6500201" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="gen-card">
+                <img src="a4bacc58-cfb2-409b-b44e-9e7abfc00e95 - Aditya.jpeg.jpg" alt="Aditya Parate" class="profile-img">
+                <div class="info-section"><div class="name">Aditya Parate</div></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/aditya-parate-3b0049325?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+        </div>
+
+        <h2 class="team-subheading">Course Coordinators</h2>
+        <div class="course-team-container">
+            <div class="course-card">
+                <div class="image-container"><img src="c1.jpg" alt="Lakshita Yadav"></div>
+                <div class="card-content"><p class="name">Lakshita Yadav</p><p class="role">Course Coordinator</p></div>
+                <div class="card-footer"><div class="social-icons"><a href="http://linkedin.com/in/lakshita-yadav-770695310" target="_blank" class="linkedin-link"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="course-card">
+                <div class="image-container"><img src="c2.jpg" alt="Nalin Goel"></div>
+                <div class="card-content"><p class="name">Nalin Goel</p><p class="role">Course Coordinator</p></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/nalin-goel-02b251310" target="_blank" class="linkedin-link"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="course-card">
+                <div class="image-container"><img src="c3.jpg" alt="Ansh Agarwal"></div>
+                <div class="card-content"><p class="name">Ansh Agarwal</p><p class="role">Course Coordinator</p></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/ansh-agarwal-b8594331b" target="_blank" class="linkedin-link"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="course-card">
+                <div class="image-container"><img src="c4.jpg" alt="Manya Dhamija"></div>
+                <div class="card-content"><p class="name">Manya Dhamija</p><p class="role">Course Coordinator</p></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/manya-dhamija2" target="_blank" class="linkedin-link"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="course-card">
+                <div class="image-container"><img src="c5.jpg" alt="Daksh Aswani"></div>
+                <div class="card-content"><p class="name">Daksh Aswani</p><p class="role">Course Coordinator</p></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/daksh-aswani-1b457428a" target="_blank" class="linkedin-link"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="course-card">
+                <div class="image-container"><img src="c6.jpg" alt="Deepanjali"></div>
+                <div class="card-content"><p class="name">Deepanjali</p><p class="role">Course Coordinator</p></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/deepanjali-dhemival-66400933b/" target="_blank" class="linkedin-link"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="course-card">
+                <div class="image-container"><img src="c7.jpg" alt="Gouri Mittal"></div>
+                <div class="card-content"><p class="name">Gouri Mittal</p><p class="role">Course Coordinator</p></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/gouri-mittal" target="_blank" class="linkedin-link"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="course-card">
+                <div class="image-container"><img src="c8.jpg" alt="Devyani"></div>
+                <div class="card-content"><p class="name">Devyani</p><p class="role">Course Coordinator</p></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/devyani-pahal-08991633b/" target="_blank" class="linkedin-link"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+            <div class="course-card">
+                <div class="image-container"><img src="c9.jpg" alt="Akshada Bhamare"></div>
+                <div class="card-content"><p class="name">Akshada Bhamare</p><p class="role">Course Coordinator</p></div>
+                <div class="card-footer"><div class="social-icons"><a href="https://www.linkedin.com/in/akshada-bhamare-514723346" target="_blank" class="linkedin-link"><i class="fa-brands fa-linkedin"></i><span class="linkedin-text">LinkedIn</span></a></div></div>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="footer-container">
+        <div class="footer-background">
+            <div class="radiating-effect"></div>
+            <div class="footer-logo-container">
+                <img src="cna logo 3.svg" alt="CNA Logo" />
+                <div class="founded-text">
+                    <img src="Founded in 2014, committed to developing skilled professionals through consulting, analytics, and industry engagement..svg" alt="Founded in 2014" />
+                </div>
+            </div>
+            <div class="frame-962">
+                <img src="Frame 962.svg" alt="Frame 962" />
+            </div>
+            <div class="copyright">
+                <img src="Copyright © 2016-2023 Consulting & Analytics Club, IIT Guwahati.svg" alt="Copyright" />
+            </div>
+            
+            <div class="follow-us-section">
+                <span class="follow-us-text">Follow us on</span>
+                <a class="follow-link" href="https://www.instagram.com/caciitg/" target="_blank" rel="noopener noreferrer">
+                    <span class="follow-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="none" viewBox="0 0 24 24">
+                          <rect width="20" height="20" x="2" y="2" rx="6" fill="#fff" fill-opacity="0.06" stroke="#E1306C" stroke-width="1.5"/>
+                          <circle cx="12" cy="12" r="5.3" stroke="#E1306C" stroke-width="1.5"/>
+                          <circle cx="17.05" cy="6.95" r="1.2" fill="#E1306C"/>
+                        </svg>
+                    </span>
+                    <span class="link-text">Consulting and Analytics Club</span>
+                </a>
+                <a class="follow-link" href="https://www.linkedin.com/company/caciitg/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
+                    <span class="follow-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="#0A66C2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" fill="#fff" fill-opacity="0.065"/>
+                            <path d="M17 17v-3.2c0-1.74-1-2.55-2.31-2.55-1.05 0-1.51.58-1.77 1V11h-2.05c.03.67 0 6 0 6H13v-3.36c0-.18.01-.36.07-.49.15-.36.48-.74 1.05-.74 0 0 .96 0 .96 1.14V17H17ZM7.44 9.92a1.18 1.18 0 1 1 0-2.36 1.18 1.18 0 0 1 0 2.36ZM8.46 17H6.42V11h2.04v6Z" fill="#0A66C2"/>
+                        </svg>
+                    </span>
+                    <span class="link-text">Consulting and Analytics Club</span>
+                </a>
+                <a class="follow-link" href="https://github.com/caciitg" target="_blank" rel="noopener noreferrer">
+                    <span class="follow-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="#FFFFFF">
+                            <rect x="2" y="2" width="20" height="20" rx="5" fill="#fff" fill-opacity="0.065"/>
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" fill="#FFFFFF"/>
+                        </svg>
+                    </span>
+                    <span class="link-text">Consulting and Analytics Club</span>
+                </a>
+                <a class="follow-link" href="https://discord.com/invite/YsqJFGQhQC" target="_blank" rel="noopener noreferrer">
+                    <span class="follow-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="#5865F2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" fill="#fff" fill-opacity="0.065"/>
+                            <path d="M19.54 5.14a16.91 16.91 0 0 0-4.56-1.35.07.07 0 0 0-.08.03c-.18.33-.39.76-.53 1.1a15.8 15.8 0 0 0-4.9 0c-.14-.34-.35-.77-.54-1.1a.07.07 0 0 0-.08-.03 16.9 16.9 0 0 0-4.56 1.35.07.07 0 0 0-.03.02C2.46 8.03 1.93 10.9 2.14 13.75a.07.07 0 0 0 .02.04 16.94 16.94 0 0 0 5.14 2.59.07.07 0 0 0 .08-.03l.73-1.22a.07.07 0 0 0-.03-.1 11.5 11.5 0 0 1-1.67-.8.07.07 0 0 1-.01-.11c.12-.09.24-.17.35-.26.01 0 .02-.01.03-.02a.07.07 0 0 1 .06 0c1.05.49 2.18.84 3.35 1.02a.07.07 0 0 0 .08-.06 12.1 12.1 0 0 0 1.38-3.68.07.07 0 0 0-.06-.08c-1.48-.2-2.95-.52-4.37-.97a.07.07 0 0 1-.04-.11c.26-.45.54-.88.85-1.29a.07.07 0 0 1 .07-.03c3.34 1.2 6.97 1.2 10.3 0a.07.07 0 0 1 .07.03c.31.41.59.84.85 1.29a.07.07 0 0 1-.04.11c-1.42.45-2.89.77-4.37.97a.07.07 0 0 0-.06.08 12.1 12.1 0 0 0 1.38 3.68.07.07 0 0 0 .08.06c1.17-.18 2.3-.53 3.35-1.02a.07.07 0 0 1 .06 0c.01 0 .02.01.03.02.11.09.23.17.35.26a.07.07 0 0 1-.01.11 11.5 11.5 0 0 1-1.67.8.07.07 0 0 0-.03.1l.73 1.22a.07.07 0 0 0 .08.03 16.94 16.94 0 0 0 5.14-2.59.07.07 0 0 0 .02-.04c.27-3.2-.43-6.07-1.9-8.59a.07.07 0 0 0-.03-.02z" fill="#5865F2"/>
+                            <path d="M8.68 14.81a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.93 1.93 0 0 1 1.8 2 1.93 1.93 0 0 1-1.8 2zm6.64 0a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.92 1.92 0 0 1 1.8 2 1.92 1.92 0 0 1-1.8 2z" fill="#5865F2"/>
+                        </svg>
+                    </span>
+                    <span class="link-text">Consulting and Analytics Club</span>
+                </a>
+                <a class="follow-link" href="https://www.facebook.com/caciitg" target="_blank" rel="noopener noreferrer">
+                    <span class="follow-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="#1877F2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" fill="#fff" fill-opacity="0.065"/>
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/>
+                        </svg>
+                    </span>
+                    <span class="link-text">Consulting and Analytics Club</span>
+                </a>
+            </div>
+            
+            <div class="footer-content">
+                </div>
+        </div>
+    </div>
+
+</body>
+</html>
